@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Руслан</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Manrope', sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+      animation-name: burst;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .triangle {
+      width: 48px;
+      height: 42px;
+      background: #fff;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .plus {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+
+    .plus::before,
+    .plus::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+    }
+
+    .plus::before {
+      width: 40px;
+      height: 8px;
+      top: 16px;
+      left: 0;
+    }
+
+    .plus::after {
+      width: 8px;
+      height: 40px;
+      left: 16px;
+      top: 0;
+    }
+
+    @keyframes burst {
+      0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform:
+          translate(
+            calc(-50% + var(--x)),
+            calc(-50% + var(--y))
+          )
+          scale(1.2)
+          rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      padding: 24px;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 22px;
+      padding: 30px 26px 34px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.9);
+      animation: appear 0.6s ease;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 20px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.45);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg">
+    <div class="shape triangle" style="--x:-420px; --y:-280px; animation-duration:6s"></div>
+    <div class="shape plus" style="--x:360px; --y:-320px; animation-duration:7s"></div>
+    <div class="shape triangle" style="--x:-500px; --y:120px; animation-duration:8s"></div>
+    <div class="shape plus" style="--x:480px; --y:160px; animation-duration:6.5s"></div>
+    <div class="shape triangle" style="--x:-260px; --y:420px; animation-duration:7.5s"></div>
+    <div class="shape plus" style="--x:300px; --y:460px; animation-duration:9s"></div>
+    <div class="shape triangle" style="--x:0px; --y:-520px; animation-duration:8.5s"></div>
+    <div class="shape plus" style="--x:0px; --y:520px; animation-duration:7s"></div>
+    <div class="shape triangle" style="--x:-380px; --y:-40px; animation-duration:6.8s"></div>
+    <div class="shape plus" style="--x:420px; --y:40px; animation-duration:8.2s"></div>
+  </div>
+
+  <div class="wrapper">
+    <div class="card">
+      <h1>
+        Привет, меня зовут Руслан. Я придумал продукт, который поможет каждому.
+        Подробнее можешь ознакомиться, нажав кнопку «Моё комьюнити».
+      </h1>
+
+      <div class="links">
+        <a class="btn" href="https://www.instagram.com/boost_cheater?igsh=MTFtZ2ZyZXpscjlweg==" target="_blank">Я в Instagram</a>
+        <a class="btn" href="https://t.me/gryazzny" target="_blank">Я в Telegram</a>
+        <a class="btn" href="https://youtube.com/@boost_cheater" target="_blank">Я на YouTube</a>
+        <a class="btn" href="https://t.me/boost_cheater" target="_blank">Моё комьюнити</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
